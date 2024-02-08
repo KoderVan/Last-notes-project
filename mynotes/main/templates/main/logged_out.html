@@ -1,0 +1,11 @@
+<!DOCTYPE html>
+<html lang="en">
+<body>
+<form method="post">
+    {% csrf_token %}
+     <p>Вы успешно вышли из аккаунта</p>
+    <p><a href="{% url 'login' %}">войти</a></p>
+</form>
+
+</body>
+</html>

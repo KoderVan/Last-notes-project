@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+     <meta name="viewport" content="width=device-width">
+    <link rel="stylesheet" href="static\css.main.css">
+    <title>Title</title>
+</head>
+<body>
+    <div>
+        <h3>Привет {{ request.user }}</h3>
+    </div>
+
+    <div>
+        {% if request.user.is_authenticated %}
+            <a href=" {% url 'logout' %}">Выйти</a>
+        {% else %}
+            <a href="{% url 'login' %}">Войти</a>
+        {% endif %}
+    </div>
+    <div>
+        <p><a href="{% url 'create' %}">Создать заметку</a></p>
+            <table>
+                <tr>
+                    <td>Мои заметки</td>
+                </tr>
+                {% for note in notes %}
+                <tr>
+                    <td><a href="{% url 'note' note.id %}">{{ note.title }}</a></td>
+                    <td><a href="{% url 'delete' note.id %}">Удалить</a></td>
+                    <td><a href=" {% url 'update' note.id %}">Редактировать</a></td>
+                </tr>
+                {% empty %}
+                <tr>
+                    <td>Нет заметок </td>
+                </tr>
+                {% endfor %}
+            </table>
+    </div>
+    <div>
+    </div>
+</body>
+</html>

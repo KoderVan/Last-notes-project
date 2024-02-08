@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<h1>{{request.user}}</h1>
+<h2>{{ note.title }}</h2>
+<h3>{{ note.content }}</h3>
+<p>{{ note.complete }}</p>
+<p><a href=" {% url 'home' %} "> Назад </a></p>
+</body>
+</html>
