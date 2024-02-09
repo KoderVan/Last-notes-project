@@ -1,46 +1,104 @@
 
 * {
-     margin:0;
-     padding: 0;
-     box-sizing:border-box;
+    margin:0;
+    padding: 0;
+    box-sizing:border-box;
 
 }
 
 html {
-        font-family: sans-serif;
-      }
+    font-family: sans-serif;
+    }
 
-      body {
-        margin: 0;
-      }
+header {
+    background: grey;
+    height: 100px;
+}
 
-      header {
-        background: purple;
-        height: 100px;
-      }
+body {
+    font-family: Arial, sans-serif;
+    line-height: 1.6;
+}
 
-      h1 {
-        text-align: center;
-        color: white;
-        line-height: 100px;
-        margin: 0;
-      }
-
-      article {
-        padding: 10px;
-        margin: 10px;
-        background: aqua;
-      }
-ul {
-      list-style: none;
-
+h1 {
+    text-align: center;
+    color: white;
+    line-height: 100px;
+    margin: 0;
 }
 
 a {
-       color: inherit;
-       text-decoration: none
+    color: inherit;
+    text-decoration: none
 }
 
+
+.container {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+.header, .footer {
+    background-color: #f0f0f0;
+    padding: 10px;
+    text-align: center;
+}
+
+.header h1 {
+    margin-bottom: 0;
+}
+
+.header h2 {
+    text-align: center;
+    color: black;
+    line-height: 100px;
+    margin: 0
+}
+
+
+.button-right a {
+    text-align: right;
+}
+
+.main {
+    padding: 20px;
+}
+
+.notes {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+}
+
+.note {
+    flex: 1;
+    min-width: 300px;
+    background-color: #ffffff;
+    padding: 20px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.note h2 {
+    margin-bottom: 10px;
+}
+
+.note p {
+    margin-bottom: 20px;
+}
+
+/* Стили для экранов с малым разрешением */
+@media (max-width: 600px) {
+    .notes {
+        flex-direction: column;
+    }
+
+    .note {
+        min-width: unset;
+    }
+}
 
 .section {
     display:flex;
