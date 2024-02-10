@@ -37,14 +37,6 @@ def logged_out(request):
     return render(request, 'main/logged_out.html', context={})
 
 
-# class CustomLogout(LogoutView):
-#     form_class = LogoutView
-#     template_name = 'main/logged_out.html'
-#
-#     def get_success_url(self):
-#         return reverse_lazy('login')
-
-
 class NoteList(LoginRequiredMixin, ListView):
     model = Notes
     context_object_name = 'notes'

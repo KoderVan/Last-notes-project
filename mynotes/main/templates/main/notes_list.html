@@ -1,44 +1,35 @@
 <!DOCTYPE html>
 {% load static %}
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-     <meta name="viewport" content="width=device-width">
-    <link rel="stylesheet" href="static\css.main.css">
-    <title>Title</title>
-</head>
-<body>
-    <div>
-        <h3>Привет {{ request.user }}</h3>
-    </div>
+<html lang="ru">
+<link rel="stylesheet" href="{% static 'css/main.css' %}" >
+    <header class="header h1">
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width">
+        <h2>Привет {{ request.user }}</h2>
+        <div>
+            {% if request.user.is_authenticated %}
+                <a href=" {% url 'logout' %}" class="header a">Выйти</a>
+            {% else %}
+                <a href="{% url 'login' %}" class="header a">Войти</a>
+            {% endif %}
+        </div>
+    </header>
+    <body>
+        <div class="notes">
+            {% for note in notes %}
+            <div class="note">
+                <div class="note_btn">
+                    <button class="delete-button"><a href="{% url 'delete' note.id %}"><img src="{% static 'images/1-1.png' %}" alt="My image" class="bin-img"></a></button>
+                </div>
+                <p><a href="{% url 'note' note.id %}">{{ note.title }}</a></p>
+                <h4>{{note.content}}</h4>
+                <a href=" {% url 'update' note.id %}">Редактировать</a>
+            </div>
+            {% endfor %}
 
-    <div>
-        {% if request.user.is_authenticated %}
-            <a href=" {% url 'logout' %}">Выйти</a>
-        {% else %}
-            <a href="{% url 'login' %}">Войти</a>
-        {% endif %}
-    </div>
-    <div>
-        <p><a href="{% url 'create' %}">Создать заметку</a></p>
-            <table>
-                <tr>
-                    <td>Мои заметки</td>
-                </tr>
-                {% for note in notes %}
-                <tr>
-                    <td><a href="{% url 'note' note.id %}">{{ note.title }}</a></td>
-                    <td><a href="{% url 'delete' note.id %}">Удалить</a></td>
-                    <td><a href=" {% url 'update' note.id %}">Редактировать</a></td>
-                </tr>
-                {% empty %}
-                <tr>
-                    <td>Нет заметок </td>
-                </tr>
-                {% endfor %}
-            </table>
-    </div>
-    <div>
-    </div>
+            <div class="note">
+                <h1><a href="{% url 'create' %}"> Новая заметка </a></h1>
+            </div>
+        </div>
 </body>
 </html>
